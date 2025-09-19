@@ -77,3 +77,9 @@ env/
 /man/
 /share/
 /src/
+
+#secrets
+slides/data/website_data.xml
+addons/payment_stripe/tests/common.py
+addons/sms_twilio/tests/common.py
+addons/sms_twilio/views/sms_twilio_account_manage_views.xml
