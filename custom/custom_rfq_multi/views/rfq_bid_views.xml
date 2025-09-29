@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree view -->
+    <record id="view_rfq_bid_tree" model="ir.ui.view">
+        <field name="name">rfq.bid.tree</field>
+        <field name="model">rfq.bid</field>
+        <field name="arch" type="xml">
+            <tree string="RFQ Bids">
+                <field name="name"/>
+                <field name="rfq_id"/>
+                <field name="partner_id"/>
+                <field name="bid_amount"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="view_rfq_bid_form" model="ir.ui.view">
+        <field name="name">rfq.bid.form</field>
+        <field name="model">rfq.bid</field>
+        <field name="arch" type="xml">
+            <form string="Supplier Bid">
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="rfq_id"/>
+                        <field name="partner_id"/>
+                        <field name="bid_amount"/>
+                        <field name="notes"/>
+                        <field name="state" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_set_review" type="object" string="Set Under Review" states="submitted"/>
+                        <button name="action_accept" type="object" string="Accept" states="review"/>
+                        <button name="action_reject" type="object" string="Reject" states="review"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_rfq_bid" model="ir.actions.act_window">
+        <field name="name">RFQ Bids</field>
+        <field name="res_model">rfq.bid</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_rfq_bid_root"
+              name="RFQ Bids"
+              parent="purchase.menu_purchase_root"
+              action="action_rfq_bid"/>
+</odoo>
